@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3> Sign up! </h3>
+<input id = 'email' type="text" placeholder="Email">
+<input id = 'password' type="password" placeholder="Password">
+<br>
+<button onclick="signup()"> Sign Up </button>
+
+<br>
+<br>
+<br>
+
+<button onclick="logout()"> Log Out </button>
+
+<script>
+    function signup() {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+        });
+
+    }
+
+    function logout() {
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+            alert('User has been logged out');
+        }, function(error) {
+            // An error happened.
+        });
+    }
+    
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyA8GJZsxf1ttwwXhlvaExRflVzp7-ai3_w",
+        authDomain: "lynbrookwebdev-a57b4.firebaseapp.com",
+        databaseURL: "https://lynbrookwebdev-a57b4.firebaseio.com",
+        projectId: "lynbrookwebdev-a57b4",
+        storageBucket: "lynbrookwebdev-a57b4.appspot.com",
+        messagingSenderId: "220843217577"
+    };
+    firebase.initializeApp(config);
+</script>
+
+</body>
+</html>
